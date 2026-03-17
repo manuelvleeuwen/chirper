@@ -3,21 +3,12 @@
 <div class="card bg-base-100 shadow">
     <div class="card-body">
         <div class="flex space-x-3">
-            @if ($chirp->user)
-                <div class="avatar">
-                    <div class="size-10 rounded-full">
-                        <img src="https://avatars.laravel.cloud/{{ urlencode($chirp->user->email) }}"
-                             alt="{{ $chirp->user->name }}'s avatar" class="rounded-full" />
-                    </div>
+            <div class="avatar">
+                <div class="size-10 rounded-full">
+                    <img src="https://avatars.laravel.cloud/{{ urlencode($chirp->user->username) }}"
+                         alt="{{ $chirp->user->username }}'s avatar" class="rounded-full" />
                 </div>
-            @else
-                <div class="avatar placeholder">
-                    <div class="size-10 rounded-full">
-                        <img src="https://avatars.laravel.cloud/f61123d5-0b27-434c-a4ae-c653c7fc9ed6?vibe=stealth"
-                             alt="Anonymous User" class="rounded-full" />
-                    </div>
-                </div>
-            @endif
+            </div>
 
             <div class="min-w-0 flex-1">
                 <div class="flex justify-between w-full">
@@ -31,7 +22,6 @@
                         @endif
                     </div>
 
-                    <!-- Replace the temporary @php block and $canEdit check with: -->
                     @can('update', $chirp)
                         <div class="flex gap-1">
                             <a href="/chirps/{{ $chirp->id }}/edit" class="btn btn-ghost btn-xs">
